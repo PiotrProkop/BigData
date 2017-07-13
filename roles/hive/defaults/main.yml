@@ -1,0 +1,12 @@
+hive_download_path: /tmp/hive
+derby_download_path: /tmp/hive
+hive_dir: /usr/local/hive
+derby_dir: /usr/local/derby
+hive_install_path: "{{ hive_dir }}/apache-hive-{{ hive_version }}-bin"
+derby_install_path: "{{ derby_dir}}/db-derby-{{ derby_version }}-bin"
+hive_version: 2.1.1
+hive_url: "http://www-eu.apache.org/dist/hive/hive-{{ hive_version }}/apache-hive-{{ hive_version }}-bin.tar.gz"
+derby_url: "http://www-us.apache.org/dist//db/derby/db-derby-{{ derby_version }}/db-derby-{{ derby_version }}-bin.tar.gz"
+derby_version: 10.13.1.1
+derby_listen_address: 0.0.0.0
+derby_port: 1527

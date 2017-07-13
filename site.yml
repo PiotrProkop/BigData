@@ -1,0 +1,27 @@
+- hosts: all
+  roles:
+    - ansible-oracle-java
+    - hadoop-common
+
+- hosts: namenode
+  roles:
+    - hadoop-namenode
+
+- hosts: datanode
+  roles:
+    - hadoop-datanode
+
+- hosts: resourcemanager
+  roles:
+    - yarn-rm
+    - mapreduce
+
+- hosts: nodemanager
+  roles:
+    - yarn-nn
+    - mapreduce
+
+- hosts: spark
+  roles:
+    - spark
+    - kylin

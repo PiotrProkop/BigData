@@ -1,0 +1,4 @@
+spark.master yarn
+spark.submit.deployMode client
+spark.yarn.jars {{ spark_dir }}/spark-{{ spark_version }}-bin-hadoop{{ hadoop_spark_version }}/jars/*.jar
+spark.ui.enabled false

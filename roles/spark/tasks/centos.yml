@@ -1,0 +1,40 @@
+---
+- name: create download directory for spark
+  file:
+    path: "{{ spark_download_path}}"
+    state: directory
+
+
+- name: download spark
+  get_url:
+    url: "{{ spark_url }}"
+    dest: "{{ spark_download_path }}/spark-{{ spark_version }}-bin-hadoop{{ hadoop_spark_version }}.tgz"
+
+- name: create directory for spark
+  file:
+    path: "{{ spark_dir}}"
+    state: directory
+
+- name: unarchive spark
+  unarchive:
+    src: "{{ spark_download_path }}/spark-{{ spark_version }}-bin-hadoop{{ hadoop_spark_version }}.tgz"
+    dest: "{{ spark_dir }}"
+    copy: no
+
+- name: install scala
+  yum:
+    name: "{{ scala_url }}"
+    state: present
+
+    #- name: add spark envs
+    #  blockinfile:
+    #    dest: /root/.bashrc
+    #    block: |
+    #      export SPARK_DIST_CLASSPATH="$SPARK_HOME/jars/*" 
+    #      export SPARK_HOME={{ spark_dir }}/spark-{{ spark_version }}-bin-hadoop{{ hadoop_spark_version }}
+    #      export CLASSPATH=$CLASSPATH:{{ spark_dir }}/spark-{{ spark_version }}-bin-hadoop{{ hadoop_spark_version }}
+
+- name: create spark conf
+  template: 
+    src: spark-defaults.conf.j2
+    dest: "{{ spark_dir }}/spark-{{ spark_version }}-bin-hadoop{{ hadoop_spark_version }}/conf/spark-defaults.conf"

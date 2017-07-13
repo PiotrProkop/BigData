@@ -1,0 +1,6 @@
+spark_version: 2.1.1
+hadoop_spark_version: 2.7
+spark_url: "http://www-eu.apache.org/dist/spark/spark-{{ spark_version }}/spark-{{ spark_version }}-bin-hadoop{{ hadoop_spark_version }}.tgz"
+spark_download_path: /tmp/spark
+spark_dir: /usr/local/spark
+scala_url: http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.rpm

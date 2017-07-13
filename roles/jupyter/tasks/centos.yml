@@ -1,0 +1,43 @@
+- name: install epel
+  yum:
+    name: epel-release
+    state: present
+
+- name: install packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - python-pip
+    - gcc
+    - python-devel
+
+- name: upgrade pip
+  command: pip install --upgrade pip
+
+- name: install ipython==5
+  command: pip install ipython==5
+
+- name: install jupyter
+  command: pip install jupyter
+
+- name: create jupyter config
+  template:
+    src: jupyter.config.j2
+    dest: "{{ jupyter_config_path}}"
+
+- name: create directory for jupyter
+  file:
+    path: "{{ jupyter_home }}"
+    state: directory
+
+- name: create systemd unit file
+  template:
+    src: jupyter.service.j2
+    dest: /etc/systemd/system/jupyter.service
+
+- name: daemon-reload
+  command: systemctl daemon-reload
+
+- name: start jupyter
+  command: systemctl start jupyter

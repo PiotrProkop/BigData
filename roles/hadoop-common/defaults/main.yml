@@ -1,0 +1,10 @@
+hadoop_download_path: /tmp/hadoop
+hadoop_dir: /usr/local/hadoop
+hadoop_install_path: "{{ hadoop_dir }}/hadoop-{{ hadoop_version }}"
+hadoop_version: 2.8.0
+hadoop_url: "http://www.us.apache.org/dist/hadoop/common/hadoop-{{hadoop_version}}/hadoop-{{hadoop_version}}.tar.gz"
+hadoop_namenode_hostname: big-data-1
+hadoop_user: root
+spark_version: 2.1.1
+hadoop_spark_version: 2.7
+spark_dir: /usr/local/spark

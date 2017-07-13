@@ -1,0 +1,22 @@
+---
+- name: create download directory for hadoop
+  file:
+    path: "{{ hadoop_download_path}}"
+    state: directory
+
+
+- name: download hadoop
+  get_url:
+    url: "{{ hadoop_url }}"
+    dest: "{{ hadoop_download_path }}/hadoop-{{ hadoop_version }}.tgz"
+
+- name: create directory for hadoop
+  file:
+    path: "{{ hadoop_dir}}"
+    state: directory
+
+- name: unarchive hadoop
+  unarchive:
+    src: "{{ hadoop_download_path }}/hadoop-{{ hadoop_version }}.tgz"
+    dest: "{{ hadoop_dir }}"
+    copy: no

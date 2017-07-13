@@ -1,0 +1,10 @@
+- hosts: client
+  roles:
+  - ansible-oracle-java
+  - hadoop-common
+  - hadoop-client
+  - yarn-client
+  - spark
+  - jupyter
+  - hive-client
+  - hbase-client

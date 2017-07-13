@@ -1,0 +1,6 @@
+[all]
+[namenode]
+[spark]
+[datanode]
+[resourcemanager]
+[nodemanager]

@@ -1,0 +1,37 @@
+---
+- name: create download directory for hbase
+  file:
+    path: "{{ hbase_download_path}}"
+    state: directory
+
+- name: download hbase
+  get_url:
+    url: "{{ hbase_url }}"
+    dest: "{{ hbase_download_path }}/hbase-{{ hbase_version }}.tgz"
+
+- name: create directory for hbase
+  file:
+    path: "{{ hbase_dir}}"
+    state: directory
+
+- name: unarchbase hbase
+  unarchive:
+    src: "{{ hbase_download_path }}/hbase-{{ hbase_version }}.tgz"
+    dest: "{{ hbase_dir }}"
+    creates: "hbase-{{ hbase_version }}"
+    copy: no
+
+- name: create hbase config
+  template:
+    src: hbase-site.xml.j2
+    dest: "{{ hbase_install_path }}/conf/hbase-site.xml"
+
+- name: add HBASE_HOME env
+  lineinfile:
+    dest: /root/.bashrc
+    line: "export HBASE_HOME={{hbase_install_path}}"
+
+- name: add HBASE_HOME/bin to path
+  lineinfile:
+    dest: /root/.bashrc
+    line: "export PATH=$PATH:$HBASE_HOME/bin"

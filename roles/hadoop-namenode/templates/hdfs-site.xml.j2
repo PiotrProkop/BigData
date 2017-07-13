@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!-- hdfs-site.xml -->
+<configuration>
+    <property>
+      <name>fs.defaultFS</name>
+      <value>hdfs://{{hostvars[groups["namenode"][0]].hostname}}:9000</value>
+    </property>
+    <property>
+      <name>dfs.namenode.name.dir</name>
+      <value>file:{{ hadoop_work_dir }}/hdfs/namenode</value>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:{{ hadoop_work_dir}}/hdfs/datanode</value>
+    </property>
+    <property>
+        <name>dfs.namenode.checkpoint.dir</name>
+        <value>file:{{ hadoop_work_dir }}/hdfs/namesecondary</value>
+    </property>
+    <property>
+        <name>dfs.replication</name>
+        <value>{{ replication_factor }}</value>
+    </property>
+    <property>
+        <name>dfs.block.size</name>
+        <value>{{ dfs_blocksize }}</value>
+    </property>
+</configuration>

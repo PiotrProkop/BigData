@@ -1,0 +1,12 @@
+---
+- name: create yarn config
+  template: 
+    src: yarn-site.xml.j2
+    dest: "{{ hadoop_etc_path }}/yarn-site.xml"
+
+- name: create yarn work dir
+  file:
+    path: "{{ yarn_work_dir }}"
+    state: directory
+
+

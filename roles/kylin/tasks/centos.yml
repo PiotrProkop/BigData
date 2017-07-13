@@ -1,0 +1,27 @@
+---
+- name: create download directory for kylin
+  file:
+    path: "{{ kylin_download_path}}"
+    state: directory
+
+- name: download kylin
+  get_url:
+    url: "{{ kylin_url }}"
+    dest: "{{ kylin_download_path }}/kylin-{{ kylin_version }}.tgz"
+
+- name: create directory for kylin
+  file:
+    path: "{{ kylin_dir}}"
+    state: directory
+
+- name: unarckylin kylin
+  unarchive:
+    src: "{{ kylin_download_path }}/kylin-{{ kylin_version }}.tgz"
+    dest: "{{ kylin_dir }}"
+    creates: "kylin-{{ kylin_version }}"
+    copy: no
+
+#TODO(pprokop): fix find-spark <- doesnt work with new spark
+#TODO(pprokop): start kylin ./kylin.sh start
+
+

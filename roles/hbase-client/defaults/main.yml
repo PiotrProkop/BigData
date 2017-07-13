@@ -1,0 +1,6 @@
+hbase_url: "http://ftp.ps.pl/pub/apache/hbase/{{ hbase_version }}/hbase-{{ hbase_version }}-bin.tar.gz"
+hbase_version: "1.2.6"
+hbase_download_path: /tmp/hbase
+hbase_dir: /usr/local/hbase
+hbase_install_path: "{{ hbase_dir }}/hbase-{{ hbase_version }}"
+

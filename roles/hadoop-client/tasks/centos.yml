@@ -1,0 +1,17 @@
+---
+- name: create core-site.xml
+  template:
+    src: core-site.xml.j2
+    dest: "{{  hadoop_etc_path }}/core-site.xml"
+
+- name: create hadoop work_dir
+  file:
+    path: "{{ hadoop_work_dir}}"
+    state: directory
+
+- name: create hdfs-site.xml
+  template:
+    src: hdfs-site.xml.j2
+    dest: "{{  hadoop_etc_path }}/hdfs-site.xml"
+
+
