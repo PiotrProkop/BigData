@@ -14,43 +14,43 @@
     src: hdfs-site.xml.j2
     dest: "{{  hadoop_etc_path }}/hdfs-site.xml"
 
-- name: check if pub exists
-  stat: 
-    path: "{{ '/' + hadoop_user + '/.ssh/id_rsa.pub' }}"
-  register: pub_exists
-  run_once: true
-  delegate_to: "{{  groups['namenode'][0] }}"
-
-- name: generate pub
-  command: "ssh-keygen  -t rsa -f {{ '/' + hadoop_user + '/.ssh/id_rsa' }} -N '' "
-  when: pub_exists.stat.exists == False
-  register: pub_exists
-  run_once: true
-  delegate_to: "{{  groups['namenode'][0] }}"
-
-- name: 'get id_rsa.pub'
-  shell: "cat {{ '/' + hadoop_user + '/.ssh/id_rsa.pub' }}"
-  delegate_to: "{{  groups['namenode'][0] }}"
-  register: id_rsa_pub
-  changed_when: false
-  run_once: true
-
-- name: update ssh keys
-  authorized_key:
-    user: "{{ hadoop_user }}"
-    state: present
-    key: "{{ id_rsa_pub.stdout }}"
-  with_items:
-    - "{{ groups['all'] }}"
-  delegate_to: "{{ item }}"
-  run_once: true
-
-
-- name: create slaves file
-  template:
-    src: slaves.j2
-    dest: "{{hadoop_etc_path}}/slaves"
-
+    #- name: check if pub exists
+    #  stat: 
+    #    path: "{{ '/' + hadoop_user + '/.ssh/id_rsa.pub' }}"
+    #  register: pub_exists
+    #  run_once: true
+    #  delegate_to: "{{  groups['namenode'][0] }}"
+    #
+    #- name: generate pub
+    #  command: "ssh-keygen  -t rsa -f {{ '/' + hadoop_user + '/.ssh/id_rsa' }} -N '' "
+    #  when: pub_exists.stat.exists == False
+    #  register: pub_exists
+    #  run_once: true
+    #  delegate_to: "{{  groups['namenode'][0] }}"
+    #
+    #- name: 'get id_rsa.pub'
+    #  shell: "cat {{ '/' + hadoop_user + '/.ssh/id_rsa.pub' }}"
+    #  delegate_to: "{{  groups['namenode'][0] }}"
+    #  register: id_rsa_pub
+    #  changed_when: false
+    #  run_once: true
+    #
+    #- name: update ssh keys
+    #  authorized_key:
+    #    user: "{{ hadoop_user }}"
+    #    state: present
+    #    key: "{{ id_rsa_pub.stdout }}"
+    #  with_items:
+    #    - "{{ groups['all'] }}"
+    #  delegate_to: "{{ item }}"
+    #  run_once: true
+    #
+    #
+    #- name: create slaves file
+    #  template:
+    #    src: slaves.j2
+    #    dest: "{{hadoop_etc_path}}/slaves"
+    #
 - name: format namenode
   command: "{{ hadoop_install_path }}/bin/hdfs namenode -format -force"
 

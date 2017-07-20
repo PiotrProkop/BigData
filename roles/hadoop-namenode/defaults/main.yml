@@ -1,9 +1,8 @@
-hadoop_namenode_hostname: big-data-1
 hadoop_install_path: "{{ hadoop_dir }}/hadoop-{{ hadoop_version }}"
 hadoop_user: root
 hadoop_version: 2.8.0
 hadoop_dir: /usr/local/hadoop
 hadoop_etc_path: "{{ hadoop_install_path }}/etc/hadoop"
-hadoop_work_dir: /hadoop
+hadoop_work_dir: /var/lib/hadoop
 replication_factor: 3
 dfs_blocksize: 134217728 

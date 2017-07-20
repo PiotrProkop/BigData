@@ -1,0 +1,12 @@
+#- hosts: all
+#  roles:
+#  - ansible-oracle-java 
+#    #- hadoop-common
+#
+#- hosts: namenode
+#  roles:
+#  - hadoop-namenode
+
+- hosts: datanode
+  roles:
+  - hadoop-datanode
