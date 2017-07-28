@@ -1,1 +1,2 @@
 hadoop_work_dir: /var/lib/hadoop
+spark_dir: /usr/local/spark

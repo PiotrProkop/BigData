@@ -51,8 +51,9 @@
     #    src: slaves.j2
     #    dest: "{{hadoop_etc_path}}/slaves"
     #
-- name: format namenode
-  command: "{{ hadoop_install_path }}/bin/hdfs namenode -format -force"
+    # (IMPORTANT):Run this only once when cluster is being created
+    #- name: format namenode
+    #command: "{{ hadoop_install_path }}/bin/hdfs namenode -format -force"
 
 - name: run namenode
   command: "{{ hadoop_install_path}}/sbin/hadoop-daemon.sh --config {{ hadoop_install_path }}/etc/hadoop --script {{ hadoop_install_path }}/bin/hdfs start namenode"

@@ -21,12 +21,12 @@
     dest: "{{ hadoop_dir }}"
     copy: no
 
-- name: append /etc/hosts with hadoop-datanode 
-  lineinfile:
-    name: /etc/hosts
-    line: "{{ hostvars[item]['ansible_' + hadoop_interface]['ipv4']['address'] }} {{ hostvars[item]['ansible_hostname'] }} "
-  with_items:
-    - "{{ groups['all'] }}"
+    #- name: append /etc/hosts with hadoop-datanode 
+    #  lineinfile:
+    #    name: /etc/hosts
+    #    line: "{{ hostvars[item]['ansible_' + hadoop_interface]['ipv4']['address'] }} {{ hostvars[item]['ansible_hostname'] }} "
+    #  with_items:
+    #    - "{{ groups['all'] }}"
 
 # Before 2.3, option 'dest' or 'name' was used instead of 'path'
 - name: update bashrc

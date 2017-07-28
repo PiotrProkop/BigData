@@ -1,0 +1,13 @@
+- name: install MariaDB repo
+  copy:
+    src: MariaDB.repo
+    dest: /etc/yum.repos.d/MariaDB.repo
+
+- name: install MariaDB
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - MariaDB-server
+    - MariaDB-client
+    - mysql-connector-java

@@ -33,13 +33,17 @@
 				<name>yarn.nodemanager.log-dirs</name>
 				<value>file:{{ yarn_work_dir}}/log</value>
 		</property>
-<property>
-    <name>yarn.nodemanager.pmem-check-enabled</name>
-    <value>false</value>
-</property>
+        <property>
+                <name>yarn.nodemanager.pmem-check-enabled</name>
+                <value>false</value>
+        </property>
+        <property>
+                <name>yarn.nodemanager.vmem-check-enabled</name>
+                <value>false</value>
+        </property>
+        <property>
+                <name>yarn.scheduler.maximum-allocation-mb</name>
+                <value>{{ scheduler_max_memory_allocation }}</value>
+        </property>
 
-<property>
-    <name>yarn.nodemanager.vmem-check-enabled</name>
-    <value>false</value>
-</property>
 </configuration>

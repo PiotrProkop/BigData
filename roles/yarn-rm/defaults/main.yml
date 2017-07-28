@@ -8,3 +8,4 @@ hadoop_work_dir: /hadoop
 yarn_work_dir: "{{ hadoop_work_dir }}/yarn"
 replication_factor: 3
 dfs_blocksize: 134217728 
+scheduler_max_memory_allocation: 8096

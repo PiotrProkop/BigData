@@ -1,0 +1,14 @@
+- name: run namenode
+  command: "{{ hadoop_install_path}}/sbin/hadoop-daemon.sh --config {{ hadoop_install_path }}/etc/hadoop --script {{ hadoop_install_path }}/bin/hdfs start namenode"
+
+- name: start resourcemanager
+  command: "{{ hadoop_install_path }}/sbin/yarn-daemon.sh --config {{ hadoop_install_path}}/etc/hadoop/ start resourcemanager"
+
+- name: start mariadb
+  systemd:
+    name: mariadb
+    state: started
+
+    # Start it manually to ssh to localhost
+- name: start hbase
+  command: "{{ hbase_install_path }}/bin/start-hbase.sh"

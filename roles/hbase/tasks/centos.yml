@@ -18,7 +18,7 @@
   unarchive:
     src: "{{ hbase_download_path }}/hbase-{{ hbase_version }}.tgz"
     dest: "{{ hbase_dir }}"
-    creates: "hbase-{{ hbase_version }}"
+    #creates: "hbase-{{ hbase_version }}"
     copy: no
 
 - name: create hbase config
@@ -36,5 +36,6 @@
     dest: /root/.bashrc
     line: "export PATH=$PATH:$HBASE_HOME/bin"
 
-- name: start hbase
-  command: "{{ hbase_install_path }}/bin/start-hbase.sh"
+    # Start it manually to ssh to localhost
+    #- name: start hbase
+    #  command: "{{ hbase_install_path }}/bin/start-hbase.sh"

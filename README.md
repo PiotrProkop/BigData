@@ -78,3 +78,18 @@ In order to diable firewall run :
 ```
 ansible -m raw -a "systemctl stop firewalld && systemctl disable firewalld" -i inventory/cluster -u root all
 ```
+
+
+### Killing processes
+
+In order to kill given service please run :
+
+```
+ps auxww | grep <name_of_service> | tr -s " " | cut -d " " -f 2 | xargs -n1 kill -9
+```
+
+### Hive on MariaDB
+
+Please use this link:
+
+https://dzone.com/articles/how-configure-mysql-metastore 

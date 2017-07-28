@@ -21,27 +21,27 @@
     creates: "hive-{{ hive_version }}"
     copy: no
 
-- name: create download directory for derby
-  file:
-    path: "{{ derby_download_path}}"
-    state: directory
+    #- name: create download directory for derby
+    #  file:
+    #    path: "{{ derby_download_path}}"
+    #    state: directory
 
-- name: download derby
-  get_url:
-    url: "{{ derby_url }}"
-    dest: "{{ derby_download_path }}/db-derby-{{ derby_version }}.tgz"
-
-- name: create directory for derby
-  file:
-    path: "{{ derby_dir}}"
-    state: directory
-
-- name: unarchive derby
-  unarchive:
-    src: "{{ derby_download_path }}/db-derby-{{ derby_version }}.tgz"
-    dest: "{{ derby_dir }}"
-    creates: "db-derby-{{ derby_version }}-bin"
-    copy: no
+    #- name: download derby
+    #  get_url:
+    #    url: "{{ derby_url }}"
+    #    dest: "{{ derby_download_path }}/db-derby-{{ derby_version }}.tgz"
+    #
+    #- name: create directory for derby
+    #  file:
+    #    path: "{{ derby_dir}}"
+    #    state: directory
+    #
+    #- name: unarchive derby
+    #  unarchive:
+    #    src: "{{ derby_download_path }}/db-derby-{{ derby_version }}.tgz"
+    #    dest: "{{ derby_dir }}"
+    #    creates: "db-derby-{{ derby_version }}-bin"
+    #    copy: no
 
 - name: add HIVE_HOME env to bashrc
   lineinfile:
@@ -58,10 +58,15 @@
     dest: /root/.bashrc
     line: "export CLASSPATH=$CLASSPATH:{{ hive_install_path }}/lib"
 
-- name: add derby jars to classpath
-  lineinfile:
-    dest: /root/.bashrc
-    line: "export CLASSPATH=$CLASSPATH:{{ derby_install_path }}/lib"
+    #TODO(pprokop): ln -s /usr/share/java/mysql-connector-java.jar /usr/local/hive/apache-hive-2.1.1-bin/lib/
+
+    #Create schema:
+      #      SOURCE /usr/local/hive/apache-hive-2.1.1-bin/scripts/metastore/upgrade/mysql/hive-schema-2.1.0.mysql.sql;
+
+    #- name: add derby jars to classpath
+    #  lineinfile:
+    #    dest: /root/.bashrc
+    #    line: "export CLASSPATH=$CLASSPATH:{{ derby_install_path }}/lib"
 
 - name: make hive conf
   template:
