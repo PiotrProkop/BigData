@@ -93,3 +93,15 @@ ps auxww | grep <name_of_service> | tr -s " " | cut -d " " -f 2 | xargs -n1 kill
 Please use this link:
 
 https://dzone.com/articles/how-configure-mysql-metastore 
+
+### Tweaking Kylin
+
+In order to increase a heap size in Kylin please change a `$KYLIN_HOME/bin/setenv.sh" with:
+```
+export KYLIN_JVM_SETTINGS=" -Xmx<maximum_memory_allocation>M"
+```
+
+### HBase
+
+Hbase requires Zookeeper in order to properly work in case of its failure HBase stops working.
+Zookeeper keep its quorum information inside HDFS so to reset its state remove all Zookeeper's data from HDFS.

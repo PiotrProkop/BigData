@@ -4,11 +4,14 @@
 - name: start resourcemanager
   command: "{{ hadoop_install_path }}/sbin/yarn-daemon.sh --config {{ hadoop_install_path}}/etc/hadoop/ start resourcemanager"
 
+- name: start history server
+  command: "{{ hadoop_install_path }}/sbin/mr-jobhistory-daemon.sh --config {{ hadoop_install_path }}/etc/hadoop/ start historyserver"
+
 - name: start mariadb
   systemd:
     name: mariadb
     state: started
 
-    # Start it manually to ssh to localhost
+# Start it manually to ssh to localhost
 - name: start hbase
   command: "{{ hbase_install_path }}/bin/start-hbase.sh"

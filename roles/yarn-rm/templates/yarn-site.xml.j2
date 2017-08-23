@@ -7,7 +7,7 @@
 		</property>
 		<property>
                 <name>yarn.resourcemanager.bind-host</name>
-                <value>0.0.0.0</value>
+                <value>{{ hostvars[groups["resourcemanager"][0]].hostname }}</value>
 		</property>
 		<property>
                 <name>yarn.nodemanager.bind-host</name>

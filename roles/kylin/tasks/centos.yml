@@ -14,7 +14,7 @@
     path: "{{ kylin_dir}}"
     state: directory
 
-- name: unarckylin kylin
+- name: unarchive kylin
   unarchive:
     src: "{{ kylin_download_path }}/kylin-{{ kylin_version }}.tgz"
     dest: "{{ kylin_dir }}"

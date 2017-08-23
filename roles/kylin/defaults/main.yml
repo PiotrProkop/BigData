@@ -1,6 +1,6 @@
-kylin_url: "https://archive.apache.org/dist/kylin/apache-kylin-{{ kylin_version }}/apache-kylin-{{ kylin_version }}-bin-hbase1x.tar.gz "
+#kylin_url: "https://archive.apache.org/dist/kylin/apache-kylin-{{ kylin_version }}/apache-kylin-{{ kylin_version }}-bin-hbase1x.tar.gz "
+kylin_url: "http://ftp.ps.pl/pub/apache/kylin/apache-kylin-2.0.0/apache-kylin-2.0.0-bin-hbase1x.tar.gz"
 kylin_version: "2.0.0"
 kylin_download_path: /tmp/kylin
 kylin_dir: /usr/local/kylin
 kylin_install_path: "{{ kylin_dir }}/apache-kylin-{{ kylin_version }}-bin"
-
