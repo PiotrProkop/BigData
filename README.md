@@ -105,3 +105,38 @@ export KYLIN_JVM_SETTINGS=" -Xmx<maximum_memory_allocation>M"
 
 Hbase requires Zookeeper in order to properly work in case of its failure HBase stops working.
 Zookeeper keep its quorum information inside HDFS so to reset its state remove all Zookeeper's data from HDFS.
+
+### Jupyter Notebook
+
+In order to change password first generate hash by running inside python shell:
+```
+from notebook.auth import passwd
+passwd("<password>")
+```
+
+Output will be a hashed <password>
+
+Next put it in `$HOME/.jupyter/jupyter_notebook_config.py`
+
+as :
+```
+c.NotebookApp.password = u'<hashed_password>'
+```
+
+Next one has to restart jupyter.
+
+Jupyter is running inside tmux session. Press ctrl+C and than relaunch it with:
+```
+PYSPARK_DRIVER_PYTHON=jupyter PYSPARK_DRIVER_PYTHON_OPTS='notebook --allow-root --ip=153.19.52.196' pyspark
+```
+### Mahout
+
+Installation path is `/usr/local/mahout/apache-mahout-distribution-0.13.0`.
+
+To run sample example go into `/usr/local/mahout/apache-mahout-distribution-0.13.0/examples/bin`
+
+and run:
+```
+./factorize-movielens-1M.sh ml-1m/ratings.dat
+```
+
