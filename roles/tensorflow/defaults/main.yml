@@ -1,0 +1,10 @@
+tensorflow_required_packages:
+  - python-devel
+  - python-pip
+  - patch
+pip_dependencies:
+  - six
+  - numpy
+  - wheel
+  - tensorflow
+  - keras
