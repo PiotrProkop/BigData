@@ -80,6 +80,21 @@ Extend LV ( Logical volume):
 lvextend -l +1306142 /dev/cl/var 
 ```
 
+### Change Hadoop version
+
+In file `group_vars/all.yml` insert:
+```
+hadoop_version: 2.8.1
+```
+
+### Clean installation:
+
+In file `group_vars/all.yml` insert:
+```
+clean_installation: True
+```
+
+
 ### Disable firewall 
 
 In order to diable firewall run :
