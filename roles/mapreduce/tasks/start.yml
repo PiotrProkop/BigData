@@ -1,0 +1,8 @@
+---
+- name: create mapred-site.xml
+  template:
+    src: mapred-site.xml.j2
+    dest: "{{  hadoop_etc_path }}/mapred-site.xml"
+
+- name: start job history server
+  command: "{{ hadoop_install_path }}/sbin/mr-jobhistory-daemon.sh --config {{ hadoop_install_path }}/etc/hadoop/ start historyserver"

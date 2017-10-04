@@ -1,0 +1,24 @@
+---
+- name: create download directory for hive
+  file:
+    path: "{{ hive_download_path}}"
+    state: directory
+
+- name: download hive
+  get_url:
+    url: "{{ hive_url }}"
+    dest: "{{ hive_download_path }}/hive-{{ hive_version }}.tgz"
+
+- name: create directory for hive
+  file:
+    path: "{{ hive_dir}}"
+    state: directory
+
+- name: unarchive hive
+  unarchive:
+    src: "{{ hive_download_path }}/hive-{{ hive_version }}.tgz"
+    dest: "{{ hive_dir }}"
+    creates: "hive-{{ hive_version }}"
+    copy: no
+
+- include: start.yml

@@ -13,3 +13,6 @@
   template:
     src: hdfs-site.xml.j2
     dest: "{{  hadoop_etc_path }}/hdfs-site.xml"
+
+- name: run datanode
+  command: "{{ hadoop_install_path}}/sbin/hadoop-daemon.sh --config {{ hadoop_install_path }}/etc/hadoop --script {{ hadoop_install_path }}/bin/hdfs start datanode"

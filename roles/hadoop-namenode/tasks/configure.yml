@@ -13,3 +13,5 @@
   template:
     src: hdfs-site.xml.j2
     dest: "{{  hadoop_etc_path }}/hdfs-site.xml"
+
+

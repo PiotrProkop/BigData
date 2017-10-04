@@ -1,0 +1,33 @@
+---
+- name: install MariaDB repo
+  copy:
+    src: MariaDB.repo
+    dest: /etc/yum.repos.d/MariaDB.repo
+
+- name: install MariaDB
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - MariaDB-server
+    - MariaDB-client
+    - mysql-connector-java
+
+- name: create direcotry for MariaDB
+  file:
+    path: /var/lib/mysql
+    state: directory
+    owner: mysql
+    group: root
+
+- name: create direcotry for MariaDB
+  file:
+    path: /var/run/mysqld/
+    state: directory
+    owner: mysql
+    group: root
+
+- name: install databse:
+  command: mysql_install_db --user=mysql --ldata=/var/lib/mysql
+
+- include: start.yml

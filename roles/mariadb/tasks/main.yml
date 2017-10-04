@@ -1,18 +1,12 @@
-- name: install MariaDB repo
-  copy:
-    src: MariaDB.repo
-    dest: /etc/yum.repos.d/MariaDB.repo
+---
+- include: install.yml
+  when: 
+    - action == "install"
 
-- name: install MariaDB
-  yum:
-    name: "{{ item }}"
-    state: present
-  with_items:
-    - MariaDB-server
-    - MariaDB-client
-    - mysql-connector-java
+- include: start.yml
+  when:
+    - action == "start"
 
-- name: start mariadb
-  service:
-    name: mariadb
-    state: started
+- include: stop.yml
+  when:
+    - action == "stop"

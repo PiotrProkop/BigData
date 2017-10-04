@@ -1,0 +1,3 @@
+---
+- name: stop resourcemanager
+  command: "{{ hadoop_install_path }}/sbin/yarn-daemon.sh --config {{ hadoop_install_path}}/etc/hadoop/ stop resourcemanager"

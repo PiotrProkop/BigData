@@ -1,0 +1,50 @@
+---
+- name: create download directory for hbase
+  file:
+    path: "{{ hbase_download_path}}"
+    state: directory
+
+- name: download hbase
+  get_url:
+    url: "{{ hbase_url }}"
+    dest: "{{ hbase_download_path }}/hbase-{{ hbase_version }}.tgz"
+
+- name: create directory for hbase
+  file:
+    path: "{{ hbase_dir}}"
+    state: directory
+
+- name: unarchbase hbase
+  unarchive:
+    src: "{{ hbase_download_path }}/hbase-{{ hbase_version }}.tgz"
+    dest: "{{ hbase_dir }}"
+    #creates: "hbase-{{ hbase_version }}"
+    copy: no
+
+- name: check if pub exists
+  stat: 
+    path: "{{ '/' + hadoop_user + '/.ssh/id_rsa.pub' }}"
+  register: pub_exists
+
+- name: generate pub
+  command: "ssh-keygen  -t rsa -f {{ '/' + hadoop_user + '/.ssh/id_rsa' }} -N '' "
+  when: pub_exists.stat.exists == False
+  register: pub_exists
+
+- name: 'get id_rsa.pub'
+  shell: "cat {{ '/' + hadoop_user + '/.ssh/id_rsa.pub' }}"
+  register: id_rsa_pub
+  changed_when: false
+
+- name: update ssh keys
+  authorized_key:
+    user: "{{ hadoop_user }}"
+    state: present
+    key: "{{ id_rsa_pub.stdout }}"
+
+- name: generate ssh/config
+  template:
+    src: config.j2
+    dest: /root/.ssh/config
+
+- include: start.yml

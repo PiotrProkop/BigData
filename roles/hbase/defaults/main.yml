@@ -4,4 +4,4 @@ hbase_version: "1.2.6"
 hbase_download_path: /tmp/hbase
 hbase_dir: /usr/local/hbase
 hbase_install_path: "{{ hbase_dir }}/hbase-{{ hbase_version }}"
-
+hadoop_user: root

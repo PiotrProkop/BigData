@@ -1,0 +1,3 @@
+---
+- name: stop hbase
+  command: "{{ hbase_install_path }}/bin/stop-hbase.sh"

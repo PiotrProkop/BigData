@@ -1,7 +1,6 @@
 [Unit]
 Description="Jupyter notebook"
 After= network.target
-
 [Service]
 Environment="PYSPARK_DRIVER_PYTHON=jupyter"
 Environment="PYSPARK_DRIVER_PYTHON_OPTS='notebook --allow-root --ip={{ ansible_default_ipv4.address}} --config={{ jupyter_config_path }}'"

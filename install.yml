@@ -1,0 +1,24 @@
+- hosts: all
+  roles:
+    - ansible-oracle-java
+
+- hosts: namenode
+  vars:
+    action: install
+  roles:
+    - hadoop-namenode
+    - yarn-rm
+    - mapreduce
+    - mariadb
+    - hbase
+    - hive
+
+- hosts: datanode
+  vars:
+    action: install
+  roles:
+    - hadoop-datanode
+    - yarn-nn
+    - mapreduce
+    - spark
+    - kylin

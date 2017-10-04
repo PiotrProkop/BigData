@@ -1,0 +1,18 @@
+---
+- name: create hbase config
+  template:
+    src: hbase-site.xml.j2
+    dest: "{{ hbase_install_path }}/conf/hbase-site.xml"
+
+- name: add HBASE_HOME env
+  lineinfile:
+    dest: /root/.bashrc
+    line: "export HBASE_HOME={{hbase_install_path}}"
+
+- name: add HBASE_HOME/bin to path
+  lineinfile:
+    dest: /root/.bashrc
+    line: "export PATH=$PATH:$HBASE_HOME/bin"
+
+- name: start hbase
+  command: "{{ hbase_install_path }}/bin/start-hbase.sh"

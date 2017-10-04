@@ -8,3 +8,6 @@
   file:
     path: "{{ yarn_work_dir }}"
     state: directory
+
+- name: start nodemanager
+  command: "{{ hadoop_install_path }}/sbin/yarn-daemon.sh --config {{ hadoop_install_path}}/etc/hadoop/ start nodemanager"

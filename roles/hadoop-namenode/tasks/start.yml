@@ -1,0 +1,6 @@
+---
+- include: configure.yml
+
+- name: run namenode
+  command: "{{ hadoop_install_path}}/sbin/hadoop-daemon.sh --config {{ hadoop_install_path }}/etc/hadoop --script {{ hadoop_install_path }}/bin/hdfs start namenode"
+
