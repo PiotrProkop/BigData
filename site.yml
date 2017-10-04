@@ -23,6 +23,7 @@
 
 - hosts: nodemanager
   roles:
+    - mariadb
     - hbase
     - hive
 

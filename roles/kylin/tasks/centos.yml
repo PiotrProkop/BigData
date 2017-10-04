@@ -1,4 +1,9 @@
 ---
+- name: install unzip
+  yum:
+    name: unzip
+    state: present
+
 - name: create download directory for kylin
   file:
     path: "{{ kylin_download_path}}"
