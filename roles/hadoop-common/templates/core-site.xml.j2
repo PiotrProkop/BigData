@@ -3,6 +3,6 @@
 <configuration>
     <property>
         <name>fs.defaultFS</name>
-        <value>hdfs://{{hostvars[groups["namenode"][0]].hostname }}:9000</value>
+        <value>hdfs://{{hostvars[groups["namenode"][0]].ansible_hostname }}:9000</value>
     </property>
 </configuration>

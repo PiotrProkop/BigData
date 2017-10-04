@@ -3,7 +3,7 @@
 <configuration>
 		<property>
 				<name>yarn.resourcemanager.hostname</name>
-				<value>{{ hostvars[groups["resourcemanager"][0]].hostname }}</value>
+				<value>{{ hostvars[groups["resourcemanager"][0]].ansible_hostname }}</value>
 		</property>
 		<property>
                 <name>yarn.resourcemanager.bind-host</name>

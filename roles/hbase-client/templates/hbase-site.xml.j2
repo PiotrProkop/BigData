@@ -5,10 +5,10 @@
 </property>
 <property>
   <name>hbase.rootdir</name>
-  <value>hdfs://{{  hostvars[groups["namenode"][0]].hostname }}:9000/hbase</value>
+  <value>hdfs://{{  hostvars[groups["namenode"][0]].ansible_hostname }}:9000/hbase</value>
 </property>
 <property>
   <name>hbase.zookeeper.quorum</name>
-  <value>{{  hostvars[groups["namenode"][0]].hostname }}</value>
+  <value>{{  hostvars[groups["namenode"][0]].ansible_hostname }}</value>
 </property>
 </configuration>
