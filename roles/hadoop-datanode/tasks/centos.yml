@@ -16,3 +16,11 @@
 
 - name: run datanode
   command: "{{ hadoop_install_path}}/sbin/hadoop-daemon.sh --config {{ hadoop_install_path }}/etc/hadoop --script {{ hadoop_install_path }}/bin/hdfs start datanode"
+  when:
+    - action == "start"
+
+- name: stop datanode
+  command: "{{ hadoop_install_path}}/sbin/hadoop-daemon.sh --config {{ hadoop_install_path }}/etc/hadoop --script {{ hadoop_install_path }}/bin/hdfs stop datanode"
+  when:
+    - action == "stop"
+
