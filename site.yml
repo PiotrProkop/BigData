@@ -21,6 +21,11 @@
     - yarn-nn
     - mapreduce
 
+- hosts: nodemanager
+  roles:
+    - hbase
+    - hive
+
 - hosts: spark
   roles:
     - spark
