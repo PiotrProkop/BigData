@@ -11,3 +11,8 @@
     - MariaDB-server
     - MariaDB-client
     - mysql-connector-java
+
+- name: start mariadb
+  service:
+    name: mariadb
+    state: started
