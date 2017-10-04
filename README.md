@@ -29,6 +29,15 @@ ansible -m setup -i inventory/cluster -u <user> all
 - hadoop-
 
 
+### Getting Java playbook
+
+Go into `roles` directory and run:
+```
+git clone https://github.com/ostrichops/ansible-oracle-java
+```
+
+to obtain a role for installing Java
+
 ### Running playbook
 
 
