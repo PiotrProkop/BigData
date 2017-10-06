@@ -29,10 +29,19 @@
     - mysql-connector-java
 
 - name: create mysql user
-  command: mysql -e "CREATE USER '{{mysql_user}}'@'%';"
+  command: mysql -e "CREATE USER '{{mysql_user}}'@'%'IDENTIFIED BY '{{ mysql_password }}';"
+
+- name: create database
+  command: mysql -e "CREATE DATABASE metastore;"
+
+- name: give it privileges
+  command: mysql -e " GRANT all on *.* to '{{ mysql_user }}'@'{{  hostvars[groups["namenode"][0]].ansible_hostname }}' identified by '{{mysql_password }}';" metastore
+
+- name: flush privileges
+  command: mysql -e "flush privileges;" metastore
 
 - name: create schema
-  command: "mysql -e 'SOURCE {{ hive_install_path }}/scripts/metastore/upgrade/mysql/hive-schema-2.1.0.mysql.sql;'"
+  command: mysql -e "SOURCE {{ hive_install_path }}/scripts/metastore/upgrade/mysql/hive-schema-2.1.0.mysql.sql;" metastore
 
 - name: create symbolic link
   file:

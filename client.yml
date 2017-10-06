@@ -6,5 +6,5 @@
   - yarn-client
   - spark
   - jupyter
-  - hive-client
+  - hive
   - hbase-client
