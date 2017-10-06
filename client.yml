@@ -6,5 +6,6 @@
   - yarn-client
   - spark
   - jupyter
-  - hive
+  - hive-client
   - hbase-client
+  - mapreduce

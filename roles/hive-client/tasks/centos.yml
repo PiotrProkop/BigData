@@ -26,23 +26,6 @@
     path: "{{ derby_download_path}}"
     state: directory
 
-    #- name: download derby
-    #  get_url:
-    #    url: "{{ derby_url }}"
-    #    dest: "{{ derby_download_path }}/db-derby-{{ derby_version }}.tgz"
-    #
-    #- name: create directory for derby
-    #  file:
-    #    path: "{{ derby_dir}}"
-    #    state: directory
-    #
-    #- name: unarchive derby
-    #  unarchive:
-    #    src: "{{ derby_download_path }}/db-derby-{{ derby_version }}.tgz"
-    #    dest: "{{ derby_dir }}"
-    #    creates: "db-derby-{{ derby_version }}-bin"
-    #    copy: no
-
 - name: add HIVE_HOME env to bashrc
   lineinfile:
     dest: /root/.bashrc
@@ -58,24 +41,21 @@
     dest: /root/.bashrc
     line: "export CLASSPATH=$CLASSPATH:{{ hive_install_path }}/lib"
 
-    #- name: add derby jars to classpath
-    #  lineinfile:
-    #    dest: /root/.bashrc
-    #    line: "export CLASSPATH=$CLASSPATH:{{ derby_install_path }}/lib"
-
 - name: make hive conf
   template:
     src: hive-site.xml.j2
     dest: "{{ hive_install_path }}/conf/hive-site.xml"
 
-    #- name: copy derby jars to hive 
-    #  command: cp "{{ derby_install_path }}/lib/*"  "{{ hive_install_path }}/lib/" 
+ name: install MariaDB connectore
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - mysql-connector-java
 
 
-
-    # IMPORTANT please run
-    #ln -s /usr/share/java/mysql-connector-java.jar /usr/local/spark/spark-2.1.1-bin-hadoop2.7/jars/
-    # And 
-    # ln -s /usr/share/java/mysql-connector-java.jar /usr/local/hive/apache-hive-2.1.1-bin/lib/
-#TODO(pprokop): copy jars from derby to hive
-#launch derby in systemd unit file (./startNetworkServer -h 0.0.0.0)
+- name: create symbolic link
+  file:
+    src: /usr/share/java/mysql-connector-java.jar
+    dest: "{{ hive_install_path }}/lib/mysql-connector-java.jar"
+    state: link

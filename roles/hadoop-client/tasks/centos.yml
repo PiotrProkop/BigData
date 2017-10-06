@@ -13,3 +13,8 @@
   template:
     src: hdfs-site.xml.j2
     dest: "{{  hadoop_etc_path }}/hdfs-site.xml"
+
+- name: create mapred-site.xml
+  template:
+    src: mapred-site.xml.j2
+    dest: "{{  hadoop_etc_path }}/mapred-site.xml"
