@@ -44,10 +44,10 @@
         </property>
        <property>
                 <name>yarn.nodemanager.resource.memory-mb</name>
-                <value>{{  hostvars[ansible_host]["memory"] }}</value>
+                <value>{{  hostvars[ansible_host]["memory"] | default(8096) }}</value>
        </property>
        <property>
                 <name>yarn.nodemanager.resource.cpu-vcores</name>
-                <value>{{  hostvars[ansible_host]["vcpu"] }}</value>
+                <value>{{  hostvars[ansible_host]["vcpu"] | default(8) }}</value>
        </property>
 </configuration>
