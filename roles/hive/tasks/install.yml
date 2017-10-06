@@ -21,4 +21,23 @@
     creates: "hive-{{ hive_version }}"
     copy: no
 
+- name: install MariaDB connectore
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - mysql-connector-java
+
+- name: create mysql user
+  command: mysql -e "CREATE USER '{{mysql_user}}'@'%';"
+
+- name: create schema
+  command: "mysql -e 'SOURCE {{ hive_install_path }}/scripts/metastore/upgrade/mysql/hive-schema-2.1.0.mysql.sql;'"
+
+- name: create symbolic link
+  file:
+    src: /usr/share/java/mysql-connector-java.jar
+    dest: "{{ hive_install_path }}/lib/mysql-connector-java.jar"
+    state: link
+
 - include: start.yml
