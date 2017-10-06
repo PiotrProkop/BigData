@@ -46,7 +46,7 @@
     src: hive-site.xml.j2
     dest: "{{ hive_install_path }}/conf/hive-site.xml"
 
- name: install MariaDB connectore
+- name: install MariaDB connectore
   yum:
     name: "{{ item }}"
     state: present
