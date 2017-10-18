@@ -1,3 +1,6 @@
+- hosts: all
+  gather_facts: true
+
 - hosts: namenode
   vars:
     action: start

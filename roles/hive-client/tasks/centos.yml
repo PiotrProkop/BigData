@@ -21,11 +21,6 @@
     creates: "hive-{{ hive_version }}"
     copy: no
 
-- name: create download directory for derby
-  file:
-    path: "{{ derby_download_path}}"
-    state: directory
-
 - name: add HIVE_HOME env to bashrc
   lineinfile:
     dest: /root/.bashrc
