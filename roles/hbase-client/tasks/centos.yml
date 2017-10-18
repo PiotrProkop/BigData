@@ -17,7 +17,7 @@
 - name: download hbase
   get_url:
     url: "{{ hbase_url }}"
-    dest: "{{ hbase_download_path }}/hbase-{{ hbase_version }}.tgz"
+    dest: "{{ hbase_download_path }}/hbase-{{ hbase_version }}-bin.tar.gz"
 
 - name: create directory for hbase
   file:
@@ -26,7 +26,7 @@
 
 - name: unarchive hbase
   unarchive:
-    src: "{{ hbase_download_path }}/hbase-{{ hbase_version }}.tgz"
+    src: "{{ hbase_download_path }}/hbase-{{ hbase_version }}-bin.tar.gz"
     dest: "{{ hbase_dir }}"
     copy: no
 
