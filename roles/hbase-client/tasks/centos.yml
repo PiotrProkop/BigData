@@ -1,4 +1,14 @@
 ---
+- name: install epel_release
+  yum:
+    name: epel-release
+    state: present
+
+- name: install unzip
+  yum:
+    name: unzip
+    state: present
+
 - name: create download directory for hbase
   file:
     path: "{{ hbase_download_path}}"
