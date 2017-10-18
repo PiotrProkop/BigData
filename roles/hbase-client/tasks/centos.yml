@@ -24,11 +24,10 @@
     path: "{{ hbase_dir}}"
     state: directory
 
-- name: unarchbase hbase
+- name: unarchive hbase
   unarchive:
     src: "{{ hbase_download_path }}/hbase-{{ hbase_version }}.tgz"
     dest: "{{ hbase_dir }}"
-    creates: "hbase-{{ hbase_version }}"
     copy: no
 
 - name: create hbase config
