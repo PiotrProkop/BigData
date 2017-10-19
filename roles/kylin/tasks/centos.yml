@@ -32,5 +32,8 @@
     line: '    source ${dir}/find-spark-dependency.sh'
     state: absent
 
+- name: start kylin
+  command: "{{ kylin_dir }}/apache-kylin-{{ kylin_version}}-bin/bin/kylin.sh start"
+
 #TODO(pprokop): fix find-spark <- doesnt work with new spark
 #TODO(pprokop): start kylin ./kylin.sh start
