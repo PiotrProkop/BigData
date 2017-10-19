@@ -9,8 +9,8 @@
     - yarn-rm
     - mapreduce
     - mariadb
-    - hbase
     - hive
+    - hbase
 
 - hosts: datanode
   vars:
