@@ -26,5 +26,11 @@
     creates: "kylin-{{ kylin_version }}"
     copy: no
 
+- name: replace find-spark
+  lineinfile:
+    dest: "{{ kylin_dir }}/apache-kylin-{{ kylin_version}}-bin/bin/kylin.sh"
+    line: '    source ${dir}/find-spark-dependency.sh'
+    state: absent
+
 #TODO(pprokop): fix find-spark <- doesnt work with new spark
 #TODO(pprokop): start kylin ./kylin.sh start
