@@ -1,4 +1,4 @@
-jupyter_config_path: /etc/jupyter.config
+jupyter_config_path: /root/.jupyter/jupyter_notebook_config.py
 spark_version: 2.1.1
 hadoop_spark_version: 2.7
 spark_url: "http://www-eu.apache.org/dist/spark/spark-{{ spark_version }}/spark-{{ spark_version }}-bin-hadoop{{ hadoop_spark_version }}.tgz"

@@ -147,12 +147,11 @@ as :
 c.NotebookApp.password = u'<hashed_password>'
 ```
 
-Next one has to restart jupyter.
+Next one has to restart jupyter. By running:
+```
+systemctl restart jupyter
+```
 
-Jupyter is running inside tmux session. Press ctrl+C and than relaunch it with:
-```
-PYSPARK_DRIVER_PYTHON=jupyter PYSPARK_DRIVER_PYTHON_OPTS='notebook --allow-root --ip=153.19.52.196' pyspark
-```
 ### Mahout
 
 Installation path is `/usr/local/mahout/apache-mahout-distribution-0.13.0`.
