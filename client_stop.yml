@@ -1,6 +1,0 @@
-- hosts: client
-  vars:
-    action: stop
-  roles:
-  - kylin
-  - jupyter
