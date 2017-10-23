@@ -41,10 +41,19 @@ to obtain a role for installing Java
 ### Running playbook
 
 
+```
+ansible-playbook -i inventory/cluster -u <user> install.yml
+```
+
+### Installing Hadoop
+
+For a clean installation please set a variable `format` in `group_vars/all.yaml` to True, example:
 
 ```
-ansible-playbook -i inventory/cluster -u <user> bigdata.yml
+format: True
 ```
+
+This will format hdfs and let you to make a clean installation.
 
 
 ### Resizingin LVM

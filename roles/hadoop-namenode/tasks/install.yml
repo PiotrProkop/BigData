@@ -52,8 +52,8 @@
 
 - include: configure.yml
 
-# (IMPORTANT):Run this only once when cluster is being created
-- name: format namenode
-  command: "{{ hadoop_install_path }}/bin/hdfs namenode -format -force"
+- include: format.yml
+  when: 
+    - format: True
 
 - include: start.yml
