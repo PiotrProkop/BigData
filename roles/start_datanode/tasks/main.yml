@@ -1,5 +1,0 @@
-- name: run datanode
-  command: "{{ hadoop_install_path}}/sbin/hadoop-daemon.sh --config {{ hadoop_install_path }}/etc/hadoop --script {{ hadoop_install_path }}/bin/hdfs start datanode"
-
-- name: start nodemanager
-  command: "{{ hadoop_install_path }}/sbin/yarn-daemon.sh --config {{ hadoop_install_path}}/etc/hadoop/ start nodemanager"
