@@ -1,0 +1,3 @@
+---
+- name: stop jupyter
+  command: systemctl stop jupyter

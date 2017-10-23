@@ -19,5 +19,3 @@
     - hadoop-datanode
     - yarn-nn
     - mapreduce
-    - spark
-    - kylin

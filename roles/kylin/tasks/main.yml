@@ -1,3 +1,7 @@
 ---
 - include: centos.yml
   when: ansible_os_family == "RedHat"
+
+- include: stop.yml
+  when:
+    - action == "stop"
