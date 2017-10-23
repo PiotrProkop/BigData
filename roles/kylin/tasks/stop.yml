@@ -1,2 +1,0 @@
-- name: stop kylin
-  command: "{{ kylin_dir }}/apache-kylin-{{ kylin_version}}-bin/bin/kylin.sh stop"

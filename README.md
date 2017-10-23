@@ -152,6 +152,11 @@ Next one has to restart jupyter. By running:
 systemctl restart jupyter
 ```
 
+### Stopping client 
+
+To stop client services plsease got to roles/kylin/files and launch script `stop.sh` on a client machine.
+Do the same for jupyter.
+
 ### Mahout
 
 Installation path is `/usr/local/mahout/apache-mahout-distribution-0.13.0`.
