@@ -6,7 +6,7 @@ hadoop_version: 2.8.0
 hadoop_dir: /usr/local/hadoop
 hadoop_etc_path: "{{ hadoop_install_path }}/etc/hadoop"
 hadoop_work_dir: /var/lib/hadoop
-replication_factor: 3
+replication_factor: 2
 dfs_blocksize: 134217728 
 spark_version: 2.1.1
 hadoop_spark_version: 2.7
