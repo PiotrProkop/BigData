@@ -96,14 +96,6 @@ In file `group_vars/all.yml` insert:
 hadoop_version: 2.8.1
 ```
 
-### Clean installation:
-
-In file `group_vars/all.yml` insert:
-```
-clean_installation: True
-```
-
-
 ### Disable firewall 
 
 In order to diable firewall run :
@@ -129,7 +121,7 @@ https://dzone.com/articles/how-configure-mysql-metastore
 
 ### Tweaking Kylin
 
-In order to increase a heap size in Kylin please change a `$KYLIN_HOME/bin/setenv.sh" with:
+In order to increase a heap size in Kylin please change a `$KYLIN_HOME/bin/setenv.sh` with:
 ```
 export KYLIN_JVM_SETTINGS=" -Xmx<maximum_memory_allocation>M"
 ```
@@ -142,6 +134,7 @@ Zookeeper keep its quorum information inside HDFS so to reset its state remove a
 ### Jupyter Notebook
 
 In order to change password first generate hash by running inside python shell:
+
 ```
 from notebook.auth import passwd
 passwd("<password>")
@@ -157,6 +150,7 @@ c.NotebookApp.password = u'<hashed_password>'
 ```
 
 Next one has to restart jupyter. By running:
+
 ```
 systemctl restart jupyter
 ```
@@ -177,3 +171,23 @@ and run:
 ./factorize-movielens-1M.sh ml-1m/ratings.dat
 ```
 
+### Enabling sudo without password for an user
+
+First type `visudo` and uncomment following line:
+
+```
+%wheel  ALL=(ALL)       NOPASSWD: ALL
+```
+
+save and exit by typing `:wq`
+
+Next add an user to group wheel
+
+```
+usermod -a -G wheel <name_of_user>
+```
+
+To check whether it was succesfull try to login to specified user and type:
+```
+sudo su
+```
