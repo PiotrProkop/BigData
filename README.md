@@ -191,3 +191,20 @@ To check whether it was succesfull try to login to specified user and type:
 ```
 sudo su
 ```
+
+### UML deployment diagrams
+
+Diagram below represents a hardware connections between physical nodes and their specification:
+
+![Hardware specification](/docs/Specification.png)
+
+
+Logical connection between HDFS, YARN, MapReduce and Spark clients are represented as:
+
+![YARN&HDFS](/docs/Computational.png)
+
+Hive and HBase can be modeled as:
+
+![Hive and HBase](/docs/Hive.png)
+
+
